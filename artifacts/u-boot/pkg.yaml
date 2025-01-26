@@ -14,6 +14,9 @@ steps:
         sha512: "{{ .uboot_sha512 }}"
     env:
       SOURCE_DATE_EPOCH: {{ .BUILD_ARG_SOURCE_DATE_EPOCH }}
+      ROCKCHIP_TPL: /libs/rkbin/bin/rk35/rk3566_ddr_1056MHz_v1.23.bin
+      BL31: /libs/rkbin/bin/rk35/rk3568_bl31_ultra_v2.17.elf
+      CFLAGS: "-DCONFIG_LOG=y -DCONFIG_LOG_CONSOLE=y -DCONFIG_LOG_MAX_LEVEL=9"
     prepare:
       - |
         mkdir -p /usr/bin \
@@ -24,14 +27,14 @@ steps:
 
         tar xf u-boot.tar.bz2 --strip-components=1
       - |
-        make board_defconfig
+        make radxa-zero-3-rk3566_defconfig
     build:
       - |
         make -j $(nproc) HOSTLDLIBS_mkimage="-lssl -lcrypto"
     install:
       - |
-        mkdir -p /rootfs/artifacts/arm64/u-boot/board
-        cp -v u-boot.bin /rootfs/artifacts/arm64/u-boot/board
+        mkdir -p /rootfs/artifacts/arm64/u-boot/radxa-zero-3e
+        cp -v u-boot-rockchip.bin /rootfs/artifacts/arm64/u-boot/radxa-zero-3e
 finalize:
   - from: /rootfs
     to: /rootfs

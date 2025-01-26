@@ -1,0 +1,11 @@
+# commit to be tagged for the new release
+commit = "HEAD"
+
+project_name = "talos-radxa-zero-3e"
+github_repo = "alabruna/talos-radxa-zero-3e"
+match_deps = "^github.com/(alabruna/[a-zA-Z0-9-]+)$"
+
+# previous = -
+# pre_release = true
+
+# [notes]

@@ -4,8 +4,14 @@ format: v1alpha2
 
 vars:
   # renovate: datasource=github-tags extractVersion=^v(?<version>.*)$ depName=u-boot/u-boot
-  uboot_version: 2023.01
-  uboot_sha256: 69423bad380f89a0916636e89e6dcbd2e4512d584308d922d1039d1e4331950f
-  uboot_sha512: 417a28267eb7875820d08fafc7316f164663609378637539e71648b0b9b7d28796b6c381717f31b0ab6472805fefd32628ef7d1b2e7b9f3c51c8ad122993f679
+  uboot_version: 2025.01
+  uboot_sha256: 8cdfc8802e081436ce96be71dccad4fcd06386672475d034390c015d3226d2c5
+  uboot_sha512: 4d25b480be5ad7265774d4dc82f274dcdf178beab326766a7e9c5afc773e4764af9faa2ebb34c4014374276496982c260d00a07963fc3a1a7bec4202fb3b0795
+
+  # Rockchip rkbin
+  rkbin_branch: master
+  rkbin_sha256: 905b1d3ea6d5f701b691fac79295f83eda4b3931a04fbfeabff2379d1443b5da
+  rkbin_sha512: afa5cd351bea1c9abcd9f68f8c8f10df2a56722b6cba89e64db8d81f959f32a5cdf8bd16a5118035c4a8b44df55e125d1f98bb402d8ccf16f504ea1403ab5013
+
 labels:
-  org.opencontainers.image.source: https://github.com/siderolabs/sbc-board
+  org.opencontainers.image.source: https://github.com/alabruna/talos-radxa-zero-3e

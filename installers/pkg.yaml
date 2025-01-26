@@ -1,10 +1,15 @@
-name: sbc-board
+name: sbc-radxa-zero-3e
 variant: scratch
 dependencies:
-  - stage: board
+  - stage: radxa-zero-3e
   - stage: u-boot
     platform: linux/arm64
   - stage: profiles
+steps:
+  - prepare:
+      - |
+        mkdir -p /rootfs/artifacts/arm64/dtb/rockchip
+        cp /dtb/rockchip/rk3566*.dtb /rootfs/artifacts/arm64/dtb/rockchip/
 finalize:
   - from: /rootfs
     to: /

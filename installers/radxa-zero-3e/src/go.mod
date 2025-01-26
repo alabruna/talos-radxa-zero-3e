@@ -1,4 +1,4 @@
-module board
+module radxa-zero-3e
 
 go 1.22.1
 
