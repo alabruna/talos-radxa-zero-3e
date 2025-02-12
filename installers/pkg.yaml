@@ -1,15 +1,14 @@
 name: sbc-radxa-zero-3e
 variant: scratch
+shell: /toolchain/bin/bash
 dependencies:
   - stage: radxa-zero-3e
-  - stage: u-boot
+  - stage: u-boot-radxa-zero-3e
     platform: linux/arm64
-  - stage: profiles
-steps:
-  - prepare:
-      - |
-        mkdir -p /rootfs/artifacts/arm64/dtb/rockchip
-        cp /dtb/rockchip/rk3566*.dtb /rootfs/artifacts/arm64/dtb/rockchip/
+  - image: "{{ .BUILD_ARG_PKGS_PREFIX }}/kernel:{{ .BUILD_ARG_PKGS }}"
+    platform: linux/arm64
+    from: /dtb/rockchip/rk3566-radxa-zero-3e.dtb
+    to: /rootfs/artifacts/arm64/dtb/rockchip/rk3566-radxa-zero-3e.dtb
 finalize:
   - from: /rootfs
     to: /

@@ -1,17 +1,43 @@
-# syntax = ghcr.io/siderolabs/bldr:v0.3.0
+# syntax = ghcr.io/siderolabs/bldr:v0.3.2
 
 format: v1alpha2
 
 vars:
+  # renovate: datasource=github-tags extractVersion=^lts-v(?<version>.*)$ depName=ARM-software/arm-trusted-firmware
+  arm_trusted_firmware_version: 2.10.4
+  arm_trusted_firmware_sha256: ba215404fe9db26e5f2cef3fdce17b7c8ed344a2a1d592dd01a5f1c5e72cfdbd
+  arm_trusted_firmware_sha512: 0b0e634ba7b1bf3d2a0ef429391f9a6c350abe373b0563e3932f0347246b773238593036674cbb958fffce36c7449f9ebb3ee340650a3184c3e052487fae656b
+
+  arm_trusted_firmware_nonlts_version: v2.12.0
+  arm_trusted_firmware_nonlts_sha256: 30abf4da07418ad0f840369c3e64dc6a0bc6a936d53a213ce10783f3d1a3430f
+  arm_trusted_firmware_nonlts_sha512: 947336e5a9b2504ebea696980c09e2b99a49ec4f84b6dfb25f9ba33d09095cf32ac518c165fcf51db8b3896842bdd954c73d6e887afc5da48803914eae82bc45
+
   # renovate: datasource=github-tags extractVersion=^v(?<version>.*)$ depName=u-boot/u-boot
   uboot_version: 2025.01
-  uboot_sha256: 8cdfc8802e081436ce96be71dccad4fcd06386672475d034390c015d3226d2c5
-  uboot_sha512: 4d25b480be5ad7265774d4dc82f274dcdf178beab326766a7e9c5afc773e4764af9faa2ebb34c4014374276496982c260d00a07963fc3a1a7bec4202fb3b0795
+  uboot_sha256: cdef7d507c93f1bbd9f015ea9bc21fa074268481405501945abc6f854d5b686f
+  uboot_sha512: e22202b568f90de15e4e20317e13d68ce106256eadeeae5017241cdd4a1d133cdfd14297b403c7391bf65d022061ad4e1cbe862c480fddbd13f97b756305f188
+
+  uboot_rc_version: 2025.04-rc2
+  uboot_rc_sha256: e54102f17328397d5d63b00865e9108d5806d18018509fc24ce6e7e3fe6a12f1
+  uboot_rc_sha512: 1f86359009f69899c9310bf2cde21cede48541a5985f4d7dc4d4e4eddfb247ea6e778ca648e21df3d79231eb6b0d9f45646f09e972d5fb60a6fbfca013cecd57
 
   # Rockchip rkbin
   rkbin_branch: master
   rkbin_sha256: 905b1d3ea6d5f701b691fac79295f83eda4b3931a04fbfeabff2379d1443b5da
   rkbin_sha512: afa5cd351bea1c9abcd9f68f8c8f10df2a56722b6cba89e64db8d81f959f32a5cdf8bd16a5118035c4a8b44df55e125d1f98bb402d8ccf16f504ea1403ab5013
+
+  # renovate: datasource=git-refs versioning=git depName=https://github.com/rockchip-linux/rkbin.git
+  rkbin_alt_ref: 7c35e21a8529b3758d1f051d1a5dc62aae934b2b
+  rkbin_alt_sha256: 18bde6ce71df308197db0e1d95fd73a19b6a32f4f0b6f5567333ef3c5b617452
+  rkbin_alt_sha512: f414b26f944e2119d6be93c1675d1bbbd2770141e229a3ffe0a176e6dc25d9cea506e7456344d714ac563af64ad708fe93cca9e184353a1b60d8881285d81822
+
+  # renovate: datasource=git-tags extractVersion=^v(?<version>.*)$ depName=git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git
+  linux_version: 6.12.1
+  linux_sha256: 0193b1d86dd372ec891bae799f6da20deef16fc199f30080a4ea9de8cef0c619
+  linux_sha512: c7523dc5b012367301ab43a685b766dce025c4993041acd3dacd085b052b3fccc7f50c892357acf481e24ccad512770ef46a13d2da16c2a178c44a27f7022932
+
+  # renovate: datasource=docker versioning=docker depName=cgr.dev/chainguard/wolfi-base
+  wolfi_base_ref: sha256:8dd9ceace8b1574e550374e9c07c2baafa60cc96223c1314fac61bd2edb48c70
 
 labels:
   org.opencontainers.image.source: https://github.com/alabruna/talos-radxa-zero-3e

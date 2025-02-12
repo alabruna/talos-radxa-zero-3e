@@ -47,7 +47,7 @@ COMMON_ARGS += --build-arg=PKGS="$(PKGS)"
 # extra variables
 
 PKGS_PREFIX ?= ghcr.io/siderolabs
-PKGS ?= v1.7.0-alpha.0-33-g3aacf03
+PKGS ?= v1.9.0-1-gb047e41
 
 # targets defines all the available targets
 

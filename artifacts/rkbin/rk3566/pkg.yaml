@@ -1,4 +1,4 @@
-name: rkbin
+name: rkbin-rk3566
 variant: scratch
 shell: /toolchain/bin/bash
 dependencies:
@@ -11,10 +11,15 @@ steps:
         sha512: "{{ .rkbin_sha512 }}"
     env:
       SOURCE_DATE_EPOCH: {{ .BUILD_ARG_SOURCE_DATE_EPOCH }}
+    prepare:
+      - |
+        tar xf rkbin.tar.gz --strip-components=1
+    build:
     install:
       - |
         mkdir -p /rootfs/rkbin
-        tar xf rkbin.tar.gz --strip-components=1 -C /rootfs/rkbin
+
+        cp bin/rk35/rk356* /rootfs/rkbin/
 finalize:
   - from: /rootfs
     to: /libs
